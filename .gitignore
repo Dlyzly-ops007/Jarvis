@@ -1,0 +1,35 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+jarvis_git_test/
+
+· GITIGNORE
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+ 
+# Secrets / personal config — never commit real values
+.env
+config.local.json
+*_local.json
+known_devices.json
+secrets.json
+ 
+# Logs and local data
+*.log
+logs/
+*.db
+*.sqlite3
+ 
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
