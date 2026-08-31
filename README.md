@@ -25,25 +25,22 @@ The architecture will evolve as the project develops rather than forcing unneces
 
 ---
 
-# 🚧 Current Development
+And update the **Project Status** to:
 
-## Command Routing
+```markdown
+## 📈 Project Status
 
-The first component being developed is the **command routing system**.
+**Early Development — JARVIS Reboot**
 
-Command routing is being built first because it provides a central path for requests entering JARVIS.
+### Current progress
 
-Different interfaces and components can eventually send requests into the same routing system:
-
-```text
-Voice Input
-     │
-Telegram
-     │
-CLI / Other Interfaces
-     │
-     ▼
-Command Router
-     │
-     ▼
-Tools / Actions / AI / Other Modules
+- [x] Public project foundation
+- [x] Initial project documentation
+- [x] Command routing foundation
+- [x] Basic command loop
+- [x] Initial routing tests
+- [ ] First real handler/module
+- [ ] Additional interfaces
+- [ ] Tools and actions
+- [ ] Memory system
+- [ ] AI integration
