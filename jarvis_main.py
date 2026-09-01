@@ -1,4 +1,6 @@
 import re
+import voice_main as voice
+import wireless
 command_rules = []
 
 def register(name, match_type, pattern, priority=100):
@@ -206,39 +208,61 @@ def handle_media_play_pause(cmd):
     print("media: play/pause")
 
 
-@register("wifi_off", "contains", ("wifi off", "turn off wifi"), priority=50)
+@register("wifi_off", "contains",
+          ("wifi off", "turn off wifi", "turn wifi off"),
+          priority=50)
 def handle_wifi_off(cmd):
-    print("wifi: off")
+    ok, message = wireless.wifi_off()
+    print(message)
+    voice.speak(message)
 
 
-@register("wifi_on", "contains", ("wifi on", "turn on wifi"), priority=51)
+@register("wifi_on", "contains",
+          ("wifi on", "turn on wifi", "turn wifi on"),
+          priority=51)
 def handle_wifi_on(cmd):
-    print("wifi: on")
+    ok, message = wireless.wifi_on()
+    print(message)
+    voice.speak(message)
 
 
-@register("wifi_toggle", "contains", "toggle wifi", priority=52)
+@register("wifi_toggle", "contains",
+          "toggle wifi",
+          priority=52)
 def handle_wifi_toggle(cmd):
-    print("wifi: toggled")
+    ok, message = wireless.wifi_toggle()
+    print(message)
+    voice.speak(message)
 
 
 @register("overlay", "exact", ("overlay", "/overlay", "screen overlay"), priority=53)
 def handle_overlay(cmd):
     print("opening screen overlay")
 
-
-@register("bluetooth_off", "contains", ("bluetooth off", "turn off bluetooth"), priority=54)
+@register("bluetooth_off", "contains",
+          ("bluetooth off", "turn off bluetooth", "turn bluetooth off"),
+          priority=54)
 def handle_bluetooth_off(cmd):
-    print("bluetooth: off")
+    ok, message = wireless.bluetooth_off()
+    print(message)
+    voice.speak(message)
 
 
-@register("bluetooth_on", "contains", ("bluetooth on", "turn on bluetooth"), priority=55)
+@register("bluetooth_on", "contains",
+          ("bluetooth on", "turn on bluetooth", "turn bluetooth on"),
+          priority=55)
 def handle_bluetooth_on(cmd):
-    print("bluetooth: on")
+    ok, message = wireless.bluetooth_on()
+    print(message)
+    voice.speak(message)
 
-
-@register("bluetooth_toggle", "contains", "toggle bluetooth", priority=56)
+@register("bluetooth_toggle", "contains",
+          "toggle bluetooth",
+          priority=56)
 def handle_bluetooth_toggle(cmd):
-    print("bluetooth: toggled")
+    ok, message = wireless.bluetooth_toggle()
+    print(message)
+    voice.speak(message)
 
 
 @register("time", "custom",
@@ -626,3 +650,28 @@ def handle_jarvis_todos(cmd):
 @register("fallback", "custom", lambda cmd: True, priority=9999)
 def handle_fallback(cmd):
     print(f"fallback -> agent: {cmd}")
+def handle_voice_command(command):
+    print(f"\nYou: {command}")
+    dispatch(command)
+
+
+def main():
+    print("JARVIS starting...")
+    voice.speak("Jarvis online.")
+
+    voice.start_listening(handle_voice_command)
+
+    print("Listening for Jarvis commands...")
+
+    try:
+        while True:
+            # Keep the main program alive
+            input()
+    except KeyboardInterrupt:
+        print("\nShutting down JARVIS...")
+    finally:
+        voice.shutdown()
+
+
+if __name__ == "__main__":
+    main()
