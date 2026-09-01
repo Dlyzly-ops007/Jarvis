@@ -43,13 +43,18 @@ def rule_matches(rule, cmd):
 
 
 def dispatch(cmd):
-    """Runs the first matching handler. Returns True if something matched."""
+    """Runs the first matching handler.
+
+    Returns the matched rule's NAME (str), or None if nothing matched.
+    Because the catch-all rule always matches, an unhandled command returns
+    "fallback" -- callers can use that to tell a real command from a miss.
+    """
     cmd = (cmd or "").lower().strip()
     for rule in command_rules:
         if rule_matches(rule, cmd):
             rule["handler"](cmd)
-            return True
-    return False
+            return rule["name"]
+    return None
 
 
 def which_rule(cmd):
@@ -369,7 +374,9 @@ def handle_my_reminders(cmd):
 
 
 @register("remind_me", "custom",
-          lambda cmd: "remind me" in cmd or "remember" in cmd, priority=81)
+          lambda cmd: ("remind me" in cmd)
+                      or ("remember" in cmd and "remember that" not in cmd),
+          priority=81)
 def handle_remind_me(cmd):
     text = cmd.replace("remind me", "").replace("remember", "").strip()
     print(f"remind me: {text}")
@@ -656,21 +663,8 @@ def handle_voice_command(command):
 
 
 def main():
-    print("JARVIS starting...")
-    voice.speak("Jarvis online.")
-
-    voice.start_listening(handle_voice_command)
-
-    print("Listening for Jarvis commands...")
-
-    try:
-        while True:
-            # Keep the main program alive
-            input()
-    except KeyboardInterrupt:
-        print("\nShutting down JARVIS...")
-    finally:
-        voice.shutdown()
+    import GUI_Tray     
+    GUI_Tray.main()
 
 
 if __name__ == "__main__":

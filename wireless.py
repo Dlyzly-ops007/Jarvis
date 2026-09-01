@@ -45,8 +45,14 @@ def _wifi_state():
         return False, None, err or "failed to read Wi-Fi status"
     state = None
     for line in out.splitlines():
-        if "Admin State" in line:
-            state = line.split(":")[-1].strip().lower()
+        if ":" not in line:
+            continue
+        label, _, value = line.partition(":")
+        label = label.strip().lower()
+        # detailed `netsh ... name=` view uses "Administrative state",
+        # the list view uses "Admin State" -- match both.
+        if "admin" in label and "state" in label:
+            state = value.strip().lower()
     if state is None:
         return False, None, "could not parse Wi-Fi state"
     return True, state == "enabled", None

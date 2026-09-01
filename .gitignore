@@ -21,6 +21,8 @@ config.local.json
 *_local.json
 known_devices.json
 secrets.json
+config/**/*.json
+*.json
  
 # Logs and local data
 *.log
