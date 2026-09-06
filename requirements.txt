@@ -1,0 +1,15 @@
+SpeechRecognition
+pyttsx3
+pystray
+Pillow
+psutil
+pynvml
+WMI
+GPUtil
+winotify
+
+# PyAudio is usually required by SpeechRecognition for microphone input.
+# Left out of the strict list above because it needs a compiled PortAudio
+# backend and can fail a plain `pip install` on some Windows setups —
+# see INSTRUCTIONS.md for the install path that actually works.
+# pyaudio
