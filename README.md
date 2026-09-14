@@ -18,6 +18,8 @@ This is a reboot of an earlier JARVIS that grew into a large monolithic codebase
 
 **Notifications** (`notificationss.py`) — desktop notifications on startup/shutdown, falling back to a printed message if `winotify` isn't available.
 
+**AI Convo** (`ai/`, `ai_convo/`) — a persistent, ChatGPT/Claude-style chat system, separate from command dispatch. Multiple provider backends (OpenRouter, Gemini, Groq, Ollama Cloud, local Ollama/Gemma 3) with configurable fallback via [LiteLLM](https://github.com/BerriAI/litellm), reachable from a Convo window in the tray or from Telegram — both share the same conversation history. Optional; see `INSTRUCTIONS.md` section 9. Not wired into `jarvis_main.py`'s command router at all.
+
 ## Requirements
 
 Windows, Python 3.9+. See `requirements.txt` and `INSTRUCTIONS.md` for full setup, including the PyAudio install workaround for Windows.
@@ -29,7 +31,7 @@ python jarvis_main.py
 
 ## Roadmap
 
-Real application launching and window control, browser automation, working clipboard/document tools, weather/news/conversion/translation, AI/LLM agent integration, persistent memory, reminders and automation, research tools, image/screen analysis, exam/quiz assistance, typing correction, structured logging, and interfaces beyond the tray.
+Real application launching and window control, browser automation, working clipboard/document tools, weather/news/conversion/translation, wiring the AI Convo system into the command fallback path as an agent, persistent memory, reminders and automation, research tools, image/screen analysis, exam/quiz assistance, typing correction, structured logging, and interfaces beyond the tray.
 
 ## Status
 

@@ -13,3 +13,14 @@ winotify
 # backend and can fail a plain `pip install` on some Windows setups —
 # see INSTRUCTIONS.md for the install path that actually works.
 # pyaudio
+
+# --- AI / Convo system (ai/, ai_convo/) ---
+litellm
+
+# Optional: only loads a .env file automatically if present; without it,
+# just export the API keys from .env.example as real env vars instead.
+# python-dotenv
+
+# Optional: only needed if you enable the Telegram side of Convo (set
+# TELEGRAM_BOT_TOKEN) — pip install pyTelegramBotAPI
+# pyTelegramBotAPI
