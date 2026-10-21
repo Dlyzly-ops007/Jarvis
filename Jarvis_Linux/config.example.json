@@ -1,0 +1,79 @@
+{
+  "assistant_name": "Jarvis",
+  "user_name": "",
+  "personality": {
+    "honorific": "sir",
+    "remark_chance": 0.35,
+    "greet_on_start": true
+  },
+  "voice": {
+    "input_enabled": false,
+    "output_enabled": false,
+    "tts_backend": "auto",
+    "tts_rate": 170,
+    "tts_voice": "en",
+    "piper_model": "",
+    "stt_backend": "google",
+    "language": "en-US",
+    "vosk_model_path": "",
+    "wake_word": "jarvis",
+    "require_wake_word": true,
+    "mic_device_index": -1
+  },
+  "apps": {
+    "aliases": {
+      "code": "visual studio code"
+    },
+    "blocked": [
+      "root terminal",
+      "gparted",
+      "synaptic"
+    ],
+    "allow_path_fallback": false
+  },
+  "files": {
+    "search_roots": [
+      "~"
+    ],
+    "include_hidden": false,
+    "max_results": 10,
+    "time_budget_s": 4.0,
+    "use_locate": true
+  },
+  "web": {
+    "search_engine": "duckduckgo",
+    "engines": {
+      "exploitdb": "https://www.exploit-db.com/search?q={q}"
+    }
+  },
+  "network": {
+    "check_hosts": [
+      "1.1.1.1:53",
+      "8.8.8.8:53"
+    ],
+    "allow_wifi_toggle": true
+  },
+  "monitor": {
+    "enabled": true,
+    "interval_s": 60,
+    "battery_low": 20,
+    "battery_critical": 10,
+    "battery_high": 0,
+    "ram_high": 90,
+    "cpu_high": 95,
+    "disk_low_free_pct": 10,
+    "disk_paths": [
+      "/",
+      "~"
+    ]
+  },
+  "notifications": {
+    "enabled": true,
+    "timeout_ms": 6000
+  },
+  "logging": {
+    "level": "INFO",
+    "console_level": "WARNING",
+    "dir": ""
+  }
+}

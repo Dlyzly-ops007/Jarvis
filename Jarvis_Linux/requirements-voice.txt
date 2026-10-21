@@ -1,0 +1,13 @@
+# Optional voice INPUT. System packages first:
+#   sudo apt install portaudio19-dev python3-dev
+SpeechRecognition>=3.10
+PyAudio>=0.2.13
+
+# Offline recognisers (pick one, then set voice.stt_backend):
+# vosk>=0.3.45            # + download a model from https://alphacephei.com/vosk/models
+# faster-whisper>=1.0     # heavier; voice.whisper_model = "base.en"
+
+# Voice OUTPUT needs no pip package — install a system engine:
+#   sudo apt install espeak-ng          (or speech-dispatcher for spd-say)
+# Fallback only if no system engine is available:
+# pyttsx3>=2.90

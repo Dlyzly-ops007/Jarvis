@@ -1,0 +1,7 @@
+# JARVIS (Linux prototype) — core runtime needs only the Python standard library (3.9+).
+# Nothing to install for text mode, system info, apps, files, network, notifications or web search.
+#
+# Optional, for running the tests with pytest instead of unittest:
+# pytest>=7
+#
+# Voice input dependencies live in requirements-voice.txt (they need system packages first).
